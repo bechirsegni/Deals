@@ -1,15 +1,37 @@
 <!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
 <html>
-  <head>
-    <title>Deals</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="template, tour template, city tours, city tour, tours tickets, transfers, travel, travel template" />
+  <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
+  <meta name="author" content="Ansonika">
+  <title>CITY TOURS - City tours and travel site template by Ansonika</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-  </head>
+  <!-- Favicons-->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
 
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+
+</head>
   <body>
     <%= yield %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+
   </body>
 </html>
