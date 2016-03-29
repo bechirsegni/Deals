@@ -16,6 +16,9 @@ end
 
 gem 'newrelic_rpm'
 gem 'devise', github: 'plataformatec/devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'web-console', '~> 3.0'
