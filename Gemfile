@@ -15,6 +15,7 @@ group :development, :test do
 end
 
 gem 'newrelic_rpm'
+gem 'devise', github: 'plataformatec/devise'
 
 group :development do
   gem 'web-console', '~> 3.0'
