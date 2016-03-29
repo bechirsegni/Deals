@@ -21,6 +21,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'mail_form', '~> 1.5', '>= 1.5.1'
+gem 'awesome_nested_set'
 
 group :development do
   gem 'web-console', '~> 3.0'

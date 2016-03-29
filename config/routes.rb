@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources 'contacts', only: [:new, :create]
   resources :articles
+  resources :categories
 
   devise_for :users, :controllers => { :omniauth_callbacks => 'callbacks' , registrations: 'registrations'}
   devise_scope :user do

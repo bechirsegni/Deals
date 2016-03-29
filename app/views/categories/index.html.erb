@@ -1,0 +1,15 @@
+<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<%= select_tag "parent_category", options_from_collection_for_select(@categories, "id", "name"),
+               :prompt => "Select a parent category", :onchange => "update_subscategories_div(this.value)" %>
+<div id="versionsDiv">
+</div>
+
+<%@categories.each do |c|%>
+    <ul><h1><%=c.name%></h1>
+      <%c.children.each do |s|%>
+          <li><%=s.name%></li><br>
+      <%end%>
+    </ul>
+<%end%>
