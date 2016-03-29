@@ -30,8 +30,9 @@
 
 </head>
   <body>
+  <%= render 'common/header'%>
     <%= yield %>
+  <%= render 'common/footer'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-
   </body>
 </html>

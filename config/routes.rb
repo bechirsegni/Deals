@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'home#index'
+
+  root 'static_pages#index'
+  match '/contact',     to: 'contacts#new',  via:[:get, :post]
+  resources 'contacts', only: [:new, :create]
 
   devise_for :users, :controllers => { :omniauth_callbacks => 'callbacks' , registrations: 'registrations'}
   devise_scope :user do

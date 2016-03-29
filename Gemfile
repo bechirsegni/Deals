@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
@@ -19,6 +20,7 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'mail_form', '~> 1.5', '>= 1.5.1'
 
 group :development do
   gem 'web-console', '~> 3.0'
@@ -26,5 +28,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'quiet_assets'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'bullet', '~> 5.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
