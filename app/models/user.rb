@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :articles
   has_many :categories
+  has_many :deals
 
 
   def self.from_omniauth(auth)

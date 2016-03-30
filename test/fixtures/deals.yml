@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  about: MyText
+  email: MyString
+  phone: MyString
+  prix_before: 1
+  prix_after: 1
+  deadline: 2016-03-29 21:52:02
+  menu: MyText
+  conditions: MyText
+  reservation: false
+  timing: MyString
+  website: MyString
+  facebook: MyString
+  instagram: MyString
+  user_id: 1
+  category_id: 1
+
+two:
+  title: MyString
+  about: MyText
+  email: MyString
+  phone: MyString
+  prix_before: 1
+  prix_after: 1
+  deadline: 2016-03-29 21:52:02
+  menu: MyText
+  conditions: MyText
+  reservation: false
+  timing: MyString
+  website: MyString
+  facebook: MyString
+  instagram: MyString
+  user_id: 1
+  category_id: 1

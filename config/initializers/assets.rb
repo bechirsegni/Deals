@@ -10,3 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( validate.js , js/map_contact.js , js/infobox)
+Rails.application.config.assets.precompile += %w( css/date_time_picker.css )
+Rails.application.config.assets.precompile += %w( css/skins/square/grey.css )
+Rails.application.config.assets.precompile += %w( js/bootstrap-datepicker.js )
+Rails.application.config.assets.precompile += %w( js/datepicker_advanced.js)

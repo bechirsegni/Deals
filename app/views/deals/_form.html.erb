@@ -1,0 +1,241 @@
+<%= render 'deals/header'%>
+
+<%= content_for :css do%>
+    <%= stylesheet_link_tag 'css/skins/square/grey.css'%>
+    <%= stylesheet_link_tag 'css/date_time_picker.css'%>
+<%end%>
+
+<%= form_for @deal, :multipart => true do |f|%>
+<div class="container margin_60">
+  <div class="row">
+    <div class="col-md-8 add_bottom_15">
+      <div class="form_title">
+        <h3><strong>1</strong>Business Details</h3>
+        <p>
+          Mussum ipsum cacilds, vidis litro abertis.
+        </p>
+      </div>
+      <div class="step">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Business Name</label>
+              <%= f.text_field :business, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Phone</label>
+              <%= f.text_field :phone, class:'form-control'%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Email</label>
+              <%= f.email_field :email, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Website</label>
+              <%= f.text_field :website, class:'form-control'%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label>Working Hours</label>
+              <%= f.text_field :timing, class:'form-control', placeholder:'Monday to Friday 9.00am - 7.30pm'%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Facebook</label>
+              <%= f.text_field :facebook, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>instagram</label>
+              <%= f.text_field :instagram, class:'form-control'%>
+            </div>
+          </div>
+        </div>
+      </div><!--End step -->
+
+      <div class="form_title">
+        <h3><strong>2</strong>Business Location</h3>
+        <p>
+          Leave your card just only for booking.
+        </p>
+      </div>
+      <div class="step">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>City</label>
+              <select id="city" class="form-control" name="deal[city]">
+                <option>Select...</option>
+                <option value="Kairouan">Kairouan</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Address</label>
+              <%= f.text_field :address, class:'form-control'%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form_title">
+        <h3><strong>3</strong>Deal Details</h3>
+        <p>
+          Leave your card just only for booking.
+        </p>
+      </div>
+      <div class="step">
+        <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="form-group">
+            <label>City</label>
+            <%= f.collection_select(:category_id, Category.where(parent_id: nil),
+                                    :id, :name, {:prompt => 'Choose a category'},
+                                     {class: "form-control"})%>
+          </div>
+        </div>
+          </div>
+        <div class="form-group">
+          <label>Title</label>
+          <%= f.text_field :title, class:'form-control'%>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label>About The Deal</label>
+              <%= f.text_area :about, class:'form-control', style:'max-width: 699px;'%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+              <label>Original Price</label>
+              <%= f.text_field :prix_before, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+              <label>Deal Price</label>
+              <%= f.text_field :prix_after, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+              <label>End of the deal</label>
+              <%= f.text_field :deadline, class:'date-picker form-control', :value=>Date.today.strftime('%m-%d-%Y'), :id =>"dp5" %>
+            </div>
+          </div>
+          </div>
+        <!--End row -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label>Deal Conditions</label>
+              <%= f.text_area :conditions, class:'form-control', style:'max-width: 699px;'%>
+              <label><%= f.check_box :reservation, :checked => false%>  If Your Deal Require Reservation Please Check THis Box</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label>Menu ( Restaurant/ Bars Only)</label>
+              <%= f.text_area :menu, class:'form-control', style:'max-width: 699px;'%>
+            </div>
+          </div>
+        </div>
+      </div><!--End step -->
+
+      <div id="policy">
+        <h4>Cancellation policy</h4>
+        <div class="form-group">
+          <label><input type="checkbox" name="policy_terms" id="policy_terms">I accept terms and conditions and general policy.</label>
+        </div>
+        <%=f.submit 'Submit Your Deal', class:'btn_1 green medium'%>
+      </div>
+    </div>
+
+    <aside class="col-md-4">
+      <div class="box_style_1">
+        <h3 class="inner">- Summary -</h3>
+        <table class="table table_summary">
+          <tbody>
+          <tr>
+            <td>
+              Adults
+            </td>
+            <td class="text-right">
+              2
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Children
+            </td>
+            <td class="text-right">
+              0
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Day
+            </td>
+            <td class="text-right">
+              25/10/2015
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Time
+            </td>
+            <td class="text-right">
+              7.30pm
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <a class="btn_full" href="confirmation_restaurant.html">Book now</a>
+        <a class="btn_full_outline" href="#"><i class="icon-right"></i> Continue shopping</a>
+      </div>
+      <div class="box_style_4">
+        <i class="icon_set_1_icon-57"></i>
+        <h4>Need <span>Help?</span></h4>
+        <a href="tel://004542344599" class="phone">+45 423 445 99</a>
+        <small>Monday to Friday 9.00am - 7.30pm</small>
+      </div>
+    </aside>
+
+  </div><!--End row -->
+</div><!--End container -->
+
+<%end%>
+
+<%= content_for :js do%>
+    <%= javascript_include_tag 'js/bootstrap-datepicker.js'%>
+    <%= javascript_include_tag 'js/datepicker_advanced.js'%>
+<%end%>
+<script>
+  $("#dt5").datepicker({
+        format: 'mm-dd-yyyy'
+      })
+      .on('changeDate', function(ev){
+        $('#dt5').datepicker('hide');
+      });
+</script>
