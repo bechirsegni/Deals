@@ -18,3 +18,6 @@ Rails.application.config.assets.precompile += %w( js/datepicker_advanced.js)
 Rails.application.config.assets.precompile += %w( js/icheck.js )
 Rails.application.config.assets.precompile += %w( css/ion.rangeSlider.skinFlat.css )
 Rails.application.config.assets.precompile += %w( js/infobox.js )
+Rails.application.config.assets.precompile += %w( css/jquery.switch.css )
+
+

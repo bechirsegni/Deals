@@ -8,7 +8,9 @@
 @import url("fontello/css/fontello.css");											/* Icon pack */
 @import url("icon_restaurant/css/icon_restaurants.css");			/* Icon pack */
 @import url("magnific-popup.css");													/* Lightbox & dialog script */
-@import url("pop_up.css");																	/* Popup Advertising */
+@import url("pop_up.css");
+@import url("jquery.switch.css");
+/* Popup Advertising */
 
 /*
 How to change colors

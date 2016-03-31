@@ -61,7 +61,8 @@ class DealsController < ApplicationController
     params.require(:deal).permit(:title,:about,:prix_before,:prix_after,:category_id,
                                  :address,:timing,:email,:deadline,:menu,:conditions,
                                  :reservation,:city,:business,:cover_photo,
-                                 :website,:phone,:facebook,:instagram,:user_id)
+                                 :website,:phone,:facebook,:instagram,:user_id,
+                                 :wifi, :parking,:music,:smoking)
   end
 
   def correct_user

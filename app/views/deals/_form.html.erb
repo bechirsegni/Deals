@@ -163,6 +163,7 @@
             </div>
           </div>
         </div>
+
       </div><!--End step -->
 
       <div id="policy">
@@ -175,47 +176,90 @@
     </div>
 
     <aside class="col-md-4">
-      <div class="box_style_1">
-        <h3 class="inner">- Summary -</h3>
-        <table class="table table_summary">
-          <tbody>
-          <tr>
-            <td>
-              Adults
-            </td>
-            <td class="text-right">
-              2
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Children
-            </td>
-            <td class="text-right">
-              0
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Day
-            </td>
-            <td class="text-right">
-              25/10/2015
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Time
-            </td>
-            <td class="text-right">
-              7.30pm
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <a class="btn_full" href="confirmation_restaurant.html">Book now</a>
-        <a class="btn_full_outline" href="#"><i class="icon-right"></i> Continue shopping</a>
-      </div>
+      <table class="table table-striped options_cart">
+        <thead>
+        <tr>
+          <th colspan="3">
+            Add options / Services
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td style="width:10%">
+            <i class="icon_set_1_icon-86"></i>
+          </td>
+          <td style="width:60%">
+            Free Wifi
+          </td>
+          <td style="width:35%">
+            <label class="switch-light switch-ios pull-right">
+              <%=f.check_box :wifi %>
+                    <span>
+                    <span>No</span>
+                    <span>Yes</span>
+                    </span>
+              <a></a>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="icon_set_1_icon-27"></i>
+          </td>
+          <td>
+            Parking
+          </td>
+          <td>
+            <label class="switch-light switch-ios pull-right">
+              <%=f.check_box :parking %>
+                    <span>
+                    <span>No</span>
+                    <span>Yes</span>
+                    </span>
+              <a></a>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="icon_set_1_icon-16"></i>
+          </td>
+          <td>
+            Music
+          </td>
+          <td>
+            <label class="switch-light switch-ios pull-right">
+              <%=f.check_box :music %>
+                    <span>
+                    <span>No</span>
+                    <span>Yes</span>
+                    </span>
+              <a></a>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="icon_set_1_icon-47"></i>
+          </td>
+          <td>
+            No smoking area
+          </td>
+          <td>
+            <label class="switch-light switch-ios pull-right">
+              <%=f.check_box :smoking %>
+                    <span>
+                    <span>No</span>
+                    <span>Yes</span>
+                    </span>
+              <a></a>
+            </label>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
       <div class="box_style_4">
         <i class="icon_set_1_icon-57"></i>
         <h4>Need <span>Help?</span></h4>

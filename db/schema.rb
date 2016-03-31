@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331032715) do
+ActiveRecord::Schema.define(version: 20160331100007) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -69,6 +69,10 @@ ActiveRecord::Schema.define(version: 20160331032715) do
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
+    t.boolean  "wifi"
+    t.boolean  "parking"
+    t.boolean  "music"
+    t.boolean  "smoking"
   end
 
   create_table "overall_averages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
