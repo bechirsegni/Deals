@@ -17,20 +17,6 @@
   </div>
 </div><!-- Position -->
 
-<%@deals.each do |d|%>
-    <%= d.title%>
-    <%= link_to vote_deal_path(d), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= d.get_upvotes.size %>
-    <% end %>
-    <%= link_to vote_deal_path(d), method: :delete, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-down"></span>
-        Downvote
-          <%= d.get_downvotes.size %>
-    <% end %>
-<%end%>
-
 <div class="collapse" id="collapseMap">
   <div id="map" class="map"></div>
 </div><!-- End Map -->
@@ -129,197 +115,33 @@
       </div><!--End tools -->
 
       <div class="row">
+        <%@deals.each do |d|%>
         <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
           <div class="tour_container">
             <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_1.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon top_rated"></div>
+                <%= link_to d do %>
+                  <%=image_tag d.cover_photo.url(:medium), style:'width:406px; height:270px', class:'img-responsive'%>
+                  <div class="badge_save">Save<strong><%=d.percentage%>%</strong></div>
                 <div class="short_info">
-                  <i class="icon_set_3_restaurant-2"></i> Fast food<span class="price"><sup>$</sup>45</span>
+                  <i class="icon_set_3_restaurant-2"></i> Fast food<span class="price"><sup>DT</sup><%=d.prix_after%></span>
                 </div>
-              </a>
+                <%end%>
             </div>
             <div class="tour_title">
-              <h3><strong>King Food</strong></h3>
+              <h3><strong><%=truncate(d.title, length:28)%></strong></h3>
               <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
+                <%= rating_for d, "price", readonly: true %>
               </div><!-- end rating -->
               <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="#">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
+                <%= link_to vote_deal_path(d), method: :put, class: "tooltip_flip tooltip-effect-1", style:'font-size: 14px;' do %>
+                    <%= d.get_upvotes.size %><span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span>
+                  <%end%>
               </div><!-- End wish list-->
             </div>
           </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_2.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon top_rated"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-2"></i> Fast food<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Catrine</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="#">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
+        </div>
+            <%end%><!-- End col-md-6 -->
       </div><!-- End row -->
-
-      <div class="row">
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.3s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_3.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon popular"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-1"></i> Pizza / Italian<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Bella Napoli</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="#">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_4.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon popular"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-4"></i> Chinese<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Dragon tower</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-      </div><!-- End row -->
-
-      <div class="row">
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.5s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_5.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon popular"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-7"></i> Fish<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Seafood</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.6s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_6.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon top_rated"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-5"></i> International<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Alfredo</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-      </div><!-- End row -->
-
-      <div class="row">
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.7s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_7.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon top_rated"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-5"></i> International<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Madlene Bar</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.8s">
-          <div class="tour_container">
-            <div class="img_container">
-              <a href="single_restaurant.html">
-                <img src="img/restaurant_box_8.jpg" width="800" height="533" class="img-responsive" alt="">
-                <div class="ribbon top_rated"></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-5"></i> International<span class="price"><sup>$</sup>45</span>
-                </div>
-              </a>
-            </div>
-            <div class="tour_title">
-              <h3><strong>Spago Bistrot</strong></h3>
-              <div class="rating">
-                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><small>(75)</small>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div><!-- End col-md-6 -->
-      </div><!-- End row -->
-
       <hr>
 
       <div class="text-center">

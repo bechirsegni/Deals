@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require js/common_scripts_min.js
 //= require js/functions.js
-//= require turbolinks
 //= require jquery.raty
 //= require ratyrate
+//= require js/underscore.min.js
+//= require gmaps/google
+//= require js/map

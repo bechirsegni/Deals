@@ -6,6 +6,8 @@
 <div id="versionsDiv">
 </div>
 
+<%= render 'categories/form' %>
+
 <%@categories.each do |c|%>
     <ul><h1><%=c.name%></h1>
       <%c.children.each do |s|%>

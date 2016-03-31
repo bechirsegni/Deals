@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name,:parent_id,:lft,:rgt)
+    params.require(:category).permit(:name,:parent_id,:lft,:rgt,:icon)
   end
 
   def correct_user

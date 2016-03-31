@@ -11,7 +11,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
-        <%= link_to("Logout", logout_path, :method => :delete)%>
         <div class="col-md-6 col-sm-6 col-xs-6">
           <ul id="top_links">
             <li>
@@ -39,6 +38,7 @@
                     <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                   </div>
                   <a id="forgot_pw" href="#">Forgot password?</a>
+                  <%= link_to("Logout", logout_path, :method => :delete)%>
                   <input type="submit" name="Sign_in" value="Sign in" id="Sign_in" class="button_drop">
                   <input type="submit" name="Sign_up" value="Sign up" id="Sign_up" class="button_drop outline">
                 </div>

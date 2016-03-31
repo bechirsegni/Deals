@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331014146) do
+ActiveRecord::Schema.define(version: 20160331032715) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160331014146) do
     t.integer "lft",       null: false
     t.integer "rgt",       null: false
     t.integer "user_id"
+    t.string  "icon"
   end
 
   add_index "categories", ["lft"], name: "index_categories_on_lft", using: :btree

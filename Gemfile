@@ -25,6 +25,8 @@ gem 'awesome_nested_set'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'ratyrate', :github => 'wazery/ratyrate'
 gem 'paperclip', '~> 5.0.0.beta1'
+gem 'will_paginate-bootstrap'
+gem 'gmaps4rails'
 
 group :development do
   gem 'web-console', '~> 3.0'
