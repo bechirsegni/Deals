@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3>Reviews </h3>
+    <a href="#" class="btn_1 add_bottom_30" data-toggle="modal" data-target="#myReview">Leave a review</a>
+  </div>
+  <div class="col-md-9">
+    <div id="general_rating"><%= @deal.reviews.size%> Reviews
+      <div class="rating">
+        Speed : <%= rating_for @deal, "price" , path: 'star_icons'%>
+      </div>
+    </div><!-- End general_rating -->
+    <hr>
+    <% @deal.reviews.each do |review| %>
+        <div class="review_strip_single">
+          <img src="img/avatar1.jpg" alt="" class="img-circle">
+          <small> - <%="#{time_ago_in_words(review.created_at)} ago"%> -</small>
+          <h4><%=review.user.email%></h4>
+          <p><%=review.body%></p>
+          <div class="rating">
+            <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>
+          </div>
+        </div><!-- End review strip -->
+    <%end%>
+  </div>
+</div>

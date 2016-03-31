@@ -1,14 +1,17 @@
 class User < ApplicationRecord
+  ratyrate_rater
+  acts_as_voter
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
-
   has_many :articles
   has_many :categories
   has_many :deals
+  has_many :reviews
 
 
   def self.from_omniauth(auth)

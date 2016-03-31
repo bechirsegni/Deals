@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'static_pages#index'
   get  '/contact',     to: 'contacts#new'
   get  'about',        to: 'static_pages#about'
@@ -7,7 +8,10 @@ Rails.application.routes.draw do
   resources 'contacts', only: [:new, :create]
   resources :articles
   resources :categories
-  resources :deals
+  resources :deals do
+    resources :reviews
+    match 'vote', action: :vote, via: [:put,:delete], on: :member
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => 'callbacks' , registrations: 'registrations'}
   devise_scope :user do

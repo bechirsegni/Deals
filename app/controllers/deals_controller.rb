@@ -1,6 +1,6 @@
 class DealsController < ApplicationController
-  before_action :set_deal ,only:[:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :set_deal ,only:[:show, :edit, :update, :destroy, :vote]
+  before_action :authenticate_user!, only: [:new,:create ,:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -40,6 +40,15 @@ class DealsController < ApplicationController
     else
       render @deal
     end
+  end
+
+  def vote
+    if request.put?
+      @deal.upvote_from current_user
+    elsif request.delete?
+      @deal.downvote_from current_user
+    end
+     redirect_to :back
   end
 
   private
