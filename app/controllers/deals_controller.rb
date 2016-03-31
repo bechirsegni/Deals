@@ -60,7 +60,7 @@ class DealsController < ApplicationController
   def deal_params
     params.require(:deal).permit(:title,:about,:prix_before,:prix_after,:category_id,
                                  :address,:timing,:email,:deadline,:menu,:conditions,
-                                 :reservation,:city,:business,
+                                 :reservation,:city,:business,:cover_photo,
                                  :website,:phone,:facebook,:instagram,:user_id)
   end
 

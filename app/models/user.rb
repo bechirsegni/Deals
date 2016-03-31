@@ -2,6 +2,10 @@ class User < ApplicationRecord
   ratyrate_rater
   acts_as_voter
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "70x70>" }, :unless => "avatar.blank?",
+                    default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,7 +23,15 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.first_name
+      user.avatar = auth.info.image
       user.password = Devise.friendly_token[0,20]
+      user.username = user.email.split("@").first
     end
+  end
+
+  def full_name
+    [first_name , last_name].join(' ')
   end
 end

@@ -12,9 +12,9 @@
     <hr>
     <% @deal.reviews.each do |review| %>
         <div class="review_strip_single">
-          <img src="img/avatar1.jpg" alt="" class="img-circle">
+          <%=image_tag review.user.avatar.url(:thumb), class:'img-circle'%>
           <small> - <%="#{time_ago_in_words(review.created_at)} ago"%> -</small>
-          <h4><%=review.user.email%></h4>
+          <h4><%=review.user.full_name%></h4>
           <p><%=review.body%></p>
           <div class="rating">
             <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>

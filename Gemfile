@@ -24,6 +24,7 @@ gem 'mail_form', '~> 1.5', '>= 1.5.1'
 gem 'awesome_nested_set'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'ratyrate', :github => 'wazery/ratyrate'
+gem 'paperclip', '~> 5.0.0.beta1'
 
 group :development do
   gem 'web-console', '~> 3.0'
