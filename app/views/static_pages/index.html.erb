@@ -8,6 +8,7 @@
   </div>
   <div id="search_bar_container" style="height: 104px; padding-top: 29px">
     <div class="container">
+      <%= form_tag deals_path, role: 'search', method: :get do %>
       <div class="search_bar">
                             <span class="nav-facade-active" id="nav-search-in" style="background: #e04f67">
                             <span id="nav-search-in-content" >All tours</span>
@@ -21,12 +22,13 @@
                             </select>
                             </span>
         <div class="nav-searchfield-outer">
-          <input type="text" autocomplete="off" name="field-keywords" placeholder="Type your search terms ...." id="twotabsearchtextbox">
+          <%= text_field_tag :q, params[:query],id:'twotabsearchtextbox' %>
         </div>
         <div class="nav-submit-button">
           <input type="submit" title="Cerca" class="nav-submit-input" value="Search">
         </div>
-      </div><!-- End search bar-->
+      </div>
+       <%end%><!-- End search bar-->
     </div>
   </div>
 </section><!-- End hero -->
