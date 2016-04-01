@@ -30,10 +30,6 @@
   </div>
 </div><!-- End Position -->
 
-<div class="collapse" id="collapseMap">
-  <div id="map" class="map"></div>
-</div><!-- End Map -->
-
 <div class="container margin_60">
   <div class="row">
     <div class="col-md-8" id="single_tour_desc">
@@ -56,8 +52,6 @@
         </ul>
       </div>
           <%end%>
-
-      <p class="visible-sm visible-xs"><a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a></p><!-- Map button for tablets/mobiles -->
 
       <div class="row">
         <div class="col-md-3">
@@ -108,21 +102,5 @@
   });
 </script>
 
-<!-- Date and time pickers -->
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/bootstrap-timepicker.js"></script>
-<script>
-  $('input.date-pick').datepicker('setDate', 'today');
-  $('input.time-pick').timepicker({
-    minuteStep: 15,
-    showInpunts: false
-  })
-</script>
-
 <!--Review modal validation -->
 <script src="assets/validate.js"></script>
-
-<!-- Map -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="js/map_single_restaurant.js"></script>
-<script src="js/infobox.js"></script>

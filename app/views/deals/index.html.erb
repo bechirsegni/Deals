@@ -1,5 +1,4 @@
 <% provide(:title, 'All The Deals') %>
-
 <section class="parallax-window" data-parallax="scroll" data-image-src="img/restaurant_top.jpg" data-natural-width="1400" data-natural-height="470">
   <div class="parallax-content-1">
     <div class="">
@@ -19,17 +18,9 @@
   </div>
 </div><!-- Position -->
 
-<div class="collapse" id="collapseMap">
-  <div id="map" class="map"></div>
-</div><!-- End Map -->
-
 <div class="container margin_60">
   <div class="row">
     <aside class="col-lg-3 col-md-3">
-      <p>
-        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a>
-      </p>
-
       <div class="box_style_cat">
         <ul id="cat_nav">
           <li><a href="#" id="active"><i class="icon_set_3_restaurant-10"></i>All restaurants <span>(141)</span></a></li>
@@ -117,32 +108,9 @@
       </div><!--End tools -->
 
       <div class="row">
-        <%@deals.each do |d|%>
-        <div class="col-md-6 col-sm-6">
-          <div class="tour_container">
-            <div class="img_container">
-                <%= link_to d do %>
-                  <%=image_tag d.cover_photo.url(:medium), style:'width:406px; height:270px', class:'img-responsive'%>
-                  <div class="badge_save">Save<strong><%=d.percentage%>%</strong></div>
-                <div class="short_info">
-                  <i class="icon_set_3_restaurant-2"></i> Fast food<span class="price"><sup>DT</sup><%=d.prix_after%></span>
-                </div>
-                <%end%>
-            </div>
-            <div class="tour_title">
-              <h3><strong><%=truncate(d.title, length:28)%></strong></h3>
-              <div class="rating">
-                <%= rating_for d, "price", readonly: true %>
-              </div><!-- end rating -->
-              <div class="wishlist">
-                <%= link_to vote_deal_path(d), method: :put, class: "tooltip_flip tooltip-effect-1", style:'font-size: 14px;' do %>
-                    <%= d.get_upvotes.size %><span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span>
-                  <%end%>
-              </div><!-- End wish list-->
-            </div>
-          </div><!-- End box tour -->
-        </div>
-            <%end%><!-- End col-md-6 -->
+        <%@deals.each do |deal|%>
+            <%= render 'deal', deal: deal %>
+         <%end%><!-- End col-md-6 -->
       </div><!-- End row -->
       <hr>
 
@@ -166,15 +134,3 @@
 <!-- Cat nav mobile -->
 <script  src="js/cat_nav_mobile.js"></script>
 <script>$('#cat_nav').mobileMenu();</script>
-<!-- Check and radio inputs -->
-<script src="js/icheck.js"></script>
-<script>
-  $('input').iCheck({
-    checkboxClass: 'icheckbox_square-grey',
-    radioClass: 'iradio_square-grey'
-  });
-</script>
-<!-- Map -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="js/map_restaurants.js"></script>
-<script src="js/infobox.js"></script>
