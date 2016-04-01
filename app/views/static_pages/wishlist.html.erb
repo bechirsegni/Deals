@@ -10,29 +10,13 @@
   </div>
 </section><!-- End section -->
 
-<div id="position">
-  <div class="container">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Category</a></li>
-      <li>Page active</li>
-    </ul>
-  </div>
-</div><!-- Position -->
-
-<div class="collapse" id="collapseMap">
-  <div id="map" class="map"></div>
-</div><!-- End Map -->
-
+<%=render 'common/position'%>
 <div  class="container margin_60">
-
   <div class="row">
     <%= render 'static_pages/partials/wishlist_sidebar'%>
     <!--End aside -->
     <div class="col-lg-9 col-md-9">
-
       <div id="tools">
-
         <div class="row">
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="styled-select-filters">
@@ -52,14 +36,11 @@
               </select>
             </div>
           </div>
-
           <div class="col-md-6 col-sm-6 hidden-xs text-right">
             <a href="all_tours_grid.html" class="bt_filters"><i class="icon-th"></i></a> <a href="#" class="bt_filters"><i class=" icon-list"></i></a>
           </div>
-
         </div>
       </div><!--/tools -->
-
 
       <%@deals.each do |f|%>
           <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
@@ -166,7 +147,6 @@
           <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
         </ul>
       </div><!-- end pagination-->
-
     </div><!-- End col lg-9 -->
   </div><!-- End row -->
 </div><!-- End container -->

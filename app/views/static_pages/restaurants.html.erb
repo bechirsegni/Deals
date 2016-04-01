@@ -16,26 +16,11 @@
   </div>
 </section><!-- End section -->
 
-<div id="position">
-  <div class="container">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Category</a></li>
-      <li>Page active</li>
-    </ul>
-  </div>
-</div><!-- Position -->
-
-<div class="collapse" id="collapseMap">
-  <div id="map" class="map"></div>
-</div><!-- End Map -->
+<%=render 'common/position'%>
 
 <div class="container margin_60">
   <div class="row">
     <aside class="col-lg-3 col-md-3">
-      <p>
-        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a>
-      </p>
         <%= render 'static_pages/partials/restaurants_categories'%>
     </aside><!--End aside -->
     <div class="col-lg-9 col-md-8">

@@ -4,6 +4,7 @@ class DealsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @categories = Category.where(parent_id: nil)
     @deals = Deal.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
   end
 
