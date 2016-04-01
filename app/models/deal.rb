@@ -16,6 +16,6 @@ class Deal < ApplicationRecord
   acts_as_votable
 
   def percentage
-    prix_after.to_f / prix_before.to_f * 100
+    (prix_after.to_f  / prix_before.to_f * 100).round
   end
 end

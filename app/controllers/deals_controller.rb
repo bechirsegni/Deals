@@ -4,11 +4,13 @@ class DealsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @deals = Deal.all
+    @deals = Deal.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
+    if user_signed_in?
     @coupons = current_user.coupons.all
+    end
   end
 
   def new

@@ -27,3 +27,13 @@ display: block;
 -moz-border-radius: 5px;
 border-radius: 5px;
 }
+
+.coupon_info{
+position: absolute;
+left: 0;
+bottom: 100px;
+width: 65%;
+padding: 18px 10px 8px 5px;
+color: #fff;
+height: 80px;
+}

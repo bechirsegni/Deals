@@ -1,6 +1,5 @@
 <% provide(:title, "#{@deal.about}") %>
 
-
 <section class="parallax-window" data-parallax="scroll" data-image-src="<%=image_url @deal.cover_photo.url(:large)%>" data-natural-width="1400" data-natural-height="470">
   <div class="parallax-content-2">
     <div class="container">
@@ -30,10 +29,6 @@
   </div>
 </div><!-- End Position -->
 
-<div class="collapse" id="collapseMap">
-  <div id="map" class="map"></div>
-</div><!-- End Map -->
-
 <div class="container margin_60">
   <div class="row">
     <div class="col-md-8" id="single_tour_desc">
@@ -41,23 +36,24 @@
       <%if @deal.wifi? || @deal.smoking? || @deal.parking? || @deal.music?%>
       <div id="single_tour_feat">
         <ul>
+          <li><i class="<%=@deal.category.icon%>"></i><%=@deal.category.name%></li>
           <%if @deal.wifi? %>
-          <li><i class="icon_set_3_restaurant-1"></i>Free Wifi</li>
+          <li><i class="icon_set_1_icon-86"></i>Free Wifi</li>
           <%end%>
+          <li><i class="icon_set_1_icon-82"></i><%= @deal.get_upvotes.size %> Likes</li>
           <%if @deal.smoking? %>
-              <li><i class="icon_set_3_restaurant-1"></i>No smoking area</li>
+              <li><i class="icon_set_1_icon-47"></i>No smoking area</li>
           <%end%>
           <%if @deal.parking? %>
-              <li><i class="icon_set_3_restaurant-1"></i>Parking</li>
+              <li><i class="icon_set_1_icon-27"></i>Parking</li>
           <%end%>
           <%if @deal.music? %>
-              <li><i class="icon_set_3_restaurant-1"></i>Music</li>
+              <li><i class="icon_set_1_icon-97"></i>Music</li>
           <%end%>
         </ul>
       </div>
           <%end%>
 
-      <p class="visible-sm visible-xs"><a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a></p><!-- Map button for tablets/mobiles -->
 
       <div class="row">
         <div class="col-md-3">
@@ -100,22 +96,6 @@
 </div><!--End container -->
 <%= render 'deals/review' %>
 
-<%= form_for([@deal, @deal.coupons.build]) do |f| %>
-    <!-- End row -->
-    <div class="form-group">
-      <%= f.text_field :number  ,value:"Deals#{rand(max=60000)}", class:'form-control', type: 'hidden' %>
-    </div>
-    <%= f.submit 'Submit', class:'btn_1' %>
-<% end %>
-
-<%@coupons.each do |c|%>
-
-    <%= c.user.full_name%>
-    <%=c.deal.about%>
-    <%=c.deal.business%>
-    <%=c.deal.percentage%>
-<%end%>
-
 <!-- Specific scripts -->
 <script src="js/icheck.js"></script>
 <script>
@@ -124,22 +104,7 @@
     radioClass: 'iradio_square-grey'
   });
 </script>
-
-<!-- Date and time pickers -->
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/bootstrap-timepicker.js"></script>
-<script>
-  $('input.date-pick').datepicker('setDate', 'today');
-  $('input.time-pick').timepicker({
-    minuteStep: 15,
-    showInpunts: false
-  })
-</script>
-
 <!--Review modal validation -->
 <script src="assets/validate.js"></script>
 
-<!-- Map -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="js/map_single_restaurant.js"></script>
-<script src="js/infobox.js"></script>
+
