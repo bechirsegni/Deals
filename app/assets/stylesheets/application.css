@@ -13,3 +13,17 @@
  *= require css/base
  *= require_self
  */
+
+a.bt_google {
+color: #fff !important;
+background: #dd4b39;
+font-weight: 700;
+font-size: 12px;
+text-align: center;
+padding: 10px 5px;
+border: none;
+display: block;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}

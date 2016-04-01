@@ -1,6 +1,8 @@
+<% provide(:title, 'All The Deals') %>
+
 <section class="parallax-window" data-parallax="scroll" data-image-src="img/restaurant_top.jpg" data-natural-width="1400" data-natural-height="470">
   <div class="parallax-content-1">
-    <div class="animated fadeInDown">
+    <div class="">
       <h1>Paris Restaurants</h1>
       <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
     </div>
@@ -116,7 +118,7 @@
 
       <div class="row">
         <%@deals.each do |d|%>
-        <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+        <div class="col-md-6 col-sm-6">
           <div class="tour_container">
             <div class="img_container">
                 <%= link_to d do %>

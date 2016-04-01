@@ -11,7 +11,7 @@
   <meta name="keywords" content="template, tour template, city tours, city tour, tours tickets, transfers, travel, travel template" />
   <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
   <meta name="author" content="Ansonika">
-  <title>CITY TOURS - City tours and travel site template by Ansonika</title>
+  <title><%= full_title(yield(:title))%></title>
 
   <!-- Favicons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -19,14 +19,16 @@
   <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
   <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
 
-  <%= csrf_meta_tags %>
-  <%= action_cable_meta_tag %>
-
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/yepnope/2.0.0/yepnope.js' %>
+
 </head>
   <body>
   <%= render 'common/header'%>

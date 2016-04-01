@@ -1,0 +1,30 @@
+<div class="dropdown dropdown-access">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
+  <div class="dropdown-menu">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <%= link_to user_facebook_omniauth_authorize_path , class:'bt_facebook' do %>
+            <i class="icon-facebook"></i>Facebook <%end%>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <%= link_to user_facebook_omniauth_authorize_path , class:'bt_google' do %>
+            <i class="icon-google"></i>Google <%end%>
+      </div>
+    </div>
+    <div class="login-or">
+      <hr class="hr-or">
+      <span class="span-or">or</span>
+    </div>
+    <%= form_for("user", :url => user_session_path) do |f| %>
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, class:'form-control' , id:'inputUsernameEmail', placeholder:'Email'%>
+   </div>
+    <div class="form-group">
+      <%= f.password_field :password, autocomplete: "off", class:'form-control', placeholder:'password',id:'inputPassword' %>
+    </div>
+    <a id="forgot_pw" href="#">Forgot password?</a>
+        <%=f.submit 'Login', class:'button_drop'%>
+        <a class="button_drop outline" href="#">Sign Up</a>
+    <%end%>
+  </div>
+</div>

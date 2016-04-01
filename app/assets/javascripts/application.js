@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require js/common_scripts_min.js
@@ -19,3 +20,4 @@
 //= require js/underscore.min.js
 //= require gmaps/google
 //= require js/map
+

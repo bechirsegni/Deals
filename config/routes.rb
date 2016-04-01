@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get  '/contact',     to: 'contacts#new'
   get  'about',        to: 'static_pages#about'
-  get  'restaurants',        to: 'static_pages#restaurants'
+  get  'restaurants',  to: 'static_pages#restaurants'
+  get  'wishlist',     to: 'static_pages#wishlist'
 
 
   resources 'contacts', only: [:new, :create]
