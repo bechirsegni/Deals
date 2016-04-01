@@ -34,6 +34,10 @@ class User < ApplicationRecord
     end
   end
 
+  def preloaded_votes(votable)
+    @preloaded_votes ||= Vote.where(voter: self, votable: votable).group(:votable_id).count
+  end
+
   def full_name
     [first_name , last_name].join(' ')
   end

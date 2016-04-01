@@ -17,7 +17,3 @@
 //= require js/functions.js
 //= require jquery.raty
 //= require ratyrate
-//= require js/underscore.min.js
-//= require gmaps/google
-//= require js/map
-

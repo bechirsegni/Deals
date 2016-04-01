@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get  'restaurants',  to: 'static_pages#restaurants'
   get  'wishlist',     to: 'static_pages#wishlist'
 
-
   resources 'contacts', only: [:new, :create]
   resources :articles
   resources :categories
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :coupons, only: [:new, :create]
     match 'vote', action: :vote, via: [:put,:delete], on: :member
+    get 'search/*query', to: 'deals#index', as: :search, on: :collection
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => 'callbacks' , registrations: 'registrations'}

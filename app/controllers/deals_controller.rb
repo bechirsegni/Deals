@@ -2,10 +2,12 @@ class DealsController < ApplicationController
   before_action :set_deal ,only:[:show, :edit, :update, :destroy, :vote]
   before_action :authenticate_user!, only: [:new,:create ,:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :beautify_search_url, only: [:index]
 
   def index
     @categories = Category.where(parent_id: nil)
-    @deals = Deal.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
+    query = params[:q].presence || "*"
+    @deals = Deal.search(query).records.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
@@ -72,5 +74,9 @@ class DealsController < ApplicationController
   def correct_user
     @deal = current_user.deals.find_by_id(params[:id])
     redirect_to deals_path, notice: "Not authorized to edit this Deal" if @deal.nil?
+  end
+
+  def beautify_search_url
+    redirect_to search_deals_path(query: params[:q]) if params[:q].present?
   end
 end

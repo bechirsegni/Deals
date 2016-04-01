@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!, only: [:wishlist]
 
   def index
-    @deals = Deal.all.limit(9).order(id: :desc)
+    @deals = Deal.limit(9).order(id: :desc).includes(:category)
   end
 
   def about
