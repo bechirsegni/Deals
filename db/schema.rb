@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331100007) do
+ActiveRecord::Schema.define(version: 20160401131342) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160331100007) do
   add_index "categories", ["lft"], name: "index_categories_on_lft", using: :btree
   add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
   add_index "categories", ["rgt"], name: "index_categories_on_rgt", using: :btree
+
+  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "number"
+    t.integer  "deal_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "coupons", ["deal_id"], name: "index_coupons_on_deal_id", using: :btree
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "business"

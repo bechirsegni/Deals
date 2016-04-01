@@ -8,6 +8,7 @@ class DealsController < ApplicationController
   end
 
   def show
+    @coupons = current_user.coupons.all
   end
 
   def new

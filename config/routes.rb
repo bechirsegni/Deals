@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :deals do
     resources :reviews
+    resources :coupons, only: [:new, :create]
     match 'vote', action: :vote, via: [:put,:delete], on: :member
   end
 

@@ -10,6 +10,7 @@ class Deal < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many   :reviews
+  has_many   :coupons
 
   ratyrate_rateable "price"
   acts_as_votable

@@ -99,6 +99,23 @@
   </div><!--End row -->
 </div><!--End container -->
 <%= render 'deals/review' %>
+
+<%= form_for([@deal, @deal.coupons.build]) do |f| %>
+    <!-- End row -->
+    <div class="form-group">
+      <%= f.text_field :number  ,value:"Deals#{rand(max=60000)}", class:'form-control', type: 'hidden' %>
+    </div>
+    <%= f.submit 'Submit', class:'btn_1' %>
+<% end %>
+
+<%@coupons.each do |c|%>
+
+    <%= c.user.full_name%>
+    <%=c.deal.about%>
+    <%=c.deal.business%>
+    <%=c.deal.percentage%>
+<%end%>
+
 <!-- Specific scripts -->
 <script src="js/icheck.js"></script>
 <script>
