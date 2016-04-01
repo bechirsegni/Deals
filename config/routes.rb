@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     post   'login',      to: 'devise/sessions#new'
     get    'register',   to: 'devise/registrations#new'
     post   'register',   to: 'devise/registrations#new'
+    get 'logout',     to: 'devise/sessions#destroy'
     delete 'logout',     to: 'devise/sessions#destroy'
     get    'password',   to: 'devise/passwords#new'
     get    'account',    to: 'registrations#edit'

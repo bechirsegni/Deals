@@ -9,15 +9,17 @@
         <p><img src="img/payments.png" width="231" height="30" alt="" data-retina="true" class="img-responsive"></p>
       </div>
       <div class="col-md-3 col-sm-3">
-        <h3>About</h3>
+        <h3>Company</h3>
         <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contacts</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Register</a></li>
-          <li><a href="#">Terms and condition</a></li>
+          <li><%= link_to 'About us',   about_path%></li>
+          <li><%= link_to 'Help' %></li>
+          <li><%= link_to 'Blog',       articles_path%></li>
+          <li><%= link_to 'Contact us', contact_path%></li>
+          <%if !user_signed_in?%>
+          <li><%= link_to 'Login',      login_path%></li>
+          <li><%= link_to 'Register',   register_path%></li>
+          <%end%>
+          <li><%= link_to 'Terms and condition' %></li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-3"  id="newsletter">
@@ -32,23 +34,10 @@
         </form>
       </div>
       <div class="col-md-2 col-sm-3">
-        <h3>Settings</h3>
-        <div class="styled-select">
-          <select class="form-control" name="lang" id="lang">
-            <option value="English" selected>English</option>
-            <option value="French">French</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Russian">Russian</option>
-          </select>
-        </div>
-        <div class="styled-select">
-          <select class="form-control" name="currency" id="currency">
-            <option value="USD" selected>USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="RUB">RUB</option>
-          </select>
-        </div>
+        <h3>Mobile Apps</h3>
+        <div class="">
+          <%= image_tag  'playstore.png' ,style:'max-width: 200px;'%>
+         </div>
       </div>
     </div><!-- End row -->
     <div class="row">

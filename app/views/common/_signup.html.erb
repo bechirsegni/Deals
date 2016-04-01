@@ -1,5 +1,5 @@
 <div class="dropdown dropdown-access">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Login</a>
   <div class="dropdown-menu">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
@@ -7,7 +7,7 @@
             <i class="icon-facebook"></i>Facebook <%end%>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <%= link_to user_facebook_omniauth_authorize_path , class:'bt_google' do %>
+        <%= link_to user_google_oauth2_omniauth_authorize_path , class:'bt_google' do %>
             <i class="icon-google"></i>Google <%end%>
       </div>
     </div>

@@ -1,3 +1,5 @@
+<% style_menu = 'display: block;padding: 10px;color: grey;background: transparent none repeat scroll 0% 0%;font-size: 14px;'%>
+
 <!--[if lte IE 8]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
@@ -13,11 +15,25 @@
         <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
         <div class="col-md-6 col-sm-6 col-xs-6">
           <ul id="top_links">
-            <li>
-              <%= render 'common/signup'%><!-- End Dropdown access -->
-            </li>
-            <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
-            <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
+            <%if user_signed_in?%>
+                <li>
+                  <div class="dropdown dropdown-cart" style="margin-top:-4px;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <%=current_user.first_name = "" ? current_user.full_name : current_user.user_name  %>
+                      <%= image_tag current_user.avatar.url(:thumb), class:'img-circle', style:'width:35px; height:26px;'%></a>
+                    <ul class="dropdown-menu" id="cart_items">
+                      <li><%=link_to 'Edit Profile', account_path, style:"#{style_menu}" %></li>
+                      <li><%=link_to 'Your Coupons' ,about_path, style:"#{style_menu}" %></li>
+                      <li><%=link_to 'Become a Dealer', account_path, style:"#{style_menu}" %></li>
+                      <li><%=link_to 'Logout', logout_path, :method => :delete, style:"#{style_menu}" %></li>
+                    </ul>
+                  </div><!-- End dropdown-cart-->
+                </li>
+            <%else%>
+            <li><%= render 'common/signup'%></li>
+            <li><%=link_to register_path do %><i class="icon-key"></i>Sign Up<%end%></li>
+            <li><%=link_to about_path do %><i class="icon-basket-2"></i>Become a Dealer<%end%></li>
+            <%end%>
           </ul>
         </div>
       </div><!-- End row -->
@@ -28,8 +44,8 @@
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-3">
         <div id="logo">
-          <a href="index-2.html"><img src="img/logo.png" width="160" height="34" alt="City tours" data-retina="true" class="logo_normal"></a>
-          <a href="index-2.html"><img src="img/logo_sticky.png" width="160" height="34" alt="City tours" data-retina="true" class="logo_sticky"></a>
+          <a href="/"><img src="img/logo.png" width="160" height="34" alt="City tours" data-retina="true" class="logo_normal"></a>
+          <a href="/"><img src="img/logo_sticky.png" width="160" height="34" alt="City tours" data-retina="true" class="logo_sticky"></a>
         </div>
       </div>
       <nav class="col-md-9 col-sm-9 col-xs-9">
@@ -191,33 +207,10 @@
             </div>
           </li>
           <li>
-            <div class="dropdown dropdown-cart">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i>Cart (0) </a>
-              <ul class="dropdown-menu" id="cart_items">
-                <li>
-                  <div class="image"><img src="img/thumb_cart_1.jpg" alt=""></div>
-                  <strong>
-                    <a href="#">Louvre museum</a>1x $36.00 </strong>
-                  <a href="#" class="action"><i class="icon-trash"></i></a>
-                </li>
-                <li>
-                  <div class="image"><img src="img/thumb_cart_2.jpg" alt=""></div>
-                  <strong>
-                    <a href="#">Versailles tour</a>2x $36.00 </strong>
-                  <a href="#" class="action"><i class="icon-trash"></i></a>
-                </li>
-                <li>
-                  <div class="image"><img src="img/thumb_cart_3.jpg" alt=""></div>
-                  <strong>
-                    <a href="#">Versailles tour</a>1x $36.00 </strong>
-                  <a href="#" class="action"><i class="icon-trash"></i></a>
-                </li>
-                <li>
-                  <div>Total: <span>$120.00</span></div>
-                  <a href="cart.html" class="button_drop">Go to cart</a>
-                  <a href="payment.html" class="button_drop outline">Check out</a>
-                </li>
-              </ul>
+            <div class="menu-wrapper">
+                <%= link_to new_deal_path, style:'font-size:18px' do%>
+                <i class="icon-plus"></i>Post Your Deal
+                <%end%>
             </div><!-- End dropdown-cart-->
           </li>
         </ul>
