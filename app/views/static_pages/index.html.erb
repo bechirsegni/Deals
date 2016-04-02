@@ -22,10 +22,7 @@
                             </select>
                             </span>
         <div class="nav-searchfield-outer">
-          <%= text_field_tag :q, params[:query],id:'twotabsearchtextbox' %>
-        </div>
-        <div class="nav-submit-button">
-          <input type="submit" title="Cerca" class="nav-submit-input" value="Search">
+          <%= text_field_tag :query, params[:query],id:'twotabsearchtextbox' %>
         </div>
       </div>
        <%end%><!-- End search bar-->

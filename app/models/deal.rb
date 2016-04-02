@@ -16,37 +16,33 @@ class Deal < ApplicationRecord
   has_many   :reviews
   has_many   :coupons
 
-  searchkick autocomplete: ['title']
   ratyrate_rateable "price"
   acts_as_votable
+  searchkick autocomplete: ['title']
 
   def percentage
     (prix_after.to_f  / prix_before.to_f * 100).round
   end
 
+  def image
+    cover_photo.url(:medium)
+  end
+
   mapping do
     indexes :id, index: :not_analyzed
-    indexes :title
+    indexes :title, type: 'string'
     indexes :about
-    indexes :prix_before
-    indexes :prix_after
-    indexes :address
-    indexes :timing
-    indexes :email
-    indexes :deadline
-    indexes :menu
-    indexes :conditions
-    indexes :reservation
-    indexes :city
-    indexes :business
-    indexes :website
-    indexes :phone
-    indexes :facebook
-    indexes :instagram
-    indexes :wifi, type: 'boolean'
-    indexes :parking, type: 'boolean'
-    indexes :music, type: 'boolean'
-    indexes :smoking, type: 'boolean'
+    indexes :prix_before, type: 'string'
+    indexes :prix_after, type: 'string'
+    indexes :address, type: 'string'
+    indexes :email, type: 'string'
+    indexes :conditions, type: 'string'
+    indexes :reservation, type: 'boolean'
+    indexes :city, type: 'string'
+    indexes :business, type: 'string'
+    indexes :website, type: 'string'
+    indexes :phone, type: 'string'
+    indexes :image
     indexes :category, type: 'nested' do
       indexes :id,   type: 'integer'
       indexes :name, type: 'string', index: :not_analyzed
@@ -65,10 +61,10 @@ class Deal < ApplicationRecord
 
 
   def as_indexes_json(options = {})
-    self.as_json(only: [:id, :about, :business,:title,:prix_after,:address,:city,:cover_photo],
+    self.as_json(only: [:id, :about, :business,:title,:prix_after,:address,:city,:image],
                  include: {
-                     usery:  { only: [:id, :first_name, :last_name] },
-                     category: { only: [:id, :name, :icon] },
+                     users:  { only: [:id, :first_name, :last_name] },
+                     categories: { only: [:id, :name, :icon] },
                      reviews:{only: [:id, :body]},
                  })
   end
