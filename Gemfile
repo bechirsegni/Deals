@@ -29,6 +29,7 @@ gem 'will_paginate-bootstrap'
 
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'searchkick'
 
 group :development do
   gem 'web-console', '~> 3.0'

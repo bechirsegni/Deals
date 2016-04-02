@@ -16,6 +16,7 @@ class Deal < ApplicationRecord
   has_many   :reviews
   has_many   :coupons
 
+  searchkick autocomplete: ['title']
   ratyrate_rateable "price"
   acts_as_votable
 
