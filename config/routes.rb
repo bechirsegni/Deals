@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1 do
+      # We are going to list our resources here
+    end
+  end
+
+
+
   post '/rate' => 'rater#create', :as => 'rate'
   root 'static_pages#index'
   get  '/contact',     to: 'contacts#new'
