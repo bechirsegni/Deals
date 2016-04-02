@@ -22,8 +22,8 @@
                       <%=current_user.first_name =  '' ? current_user.full_name : current_user.user_name  %>
                       <%= image_tag current_user.avatar.url(:thumb), class:'img-circle', style:'width:35px; height:26px;'%></a>
                     <ul class="dropdown-menu" id="cart_items">
-                      <li><%=link_to 'Edit Profile', account_path, style:"#{style_menu}" %></li>
-                      <li><%=link_to 'Your Coupons' ,about_path, style:"#{style_menu}" %></li>
+                      <li><%=link_to 'Account', account_path, style:"#{style_menu}" %></li>
+                      <li><%=link_to 'Your Coupons' ,account_path, style:"#{style_menu}"%></li>
                       <li><%=link_to 'Become a Dealer', account_path, style:"#{style_menu}" %></li>
                       <li><%=link_to 'Logout', logout_path, :method => :delete, style:"#{style_menu}" %></li>
                     </ul>

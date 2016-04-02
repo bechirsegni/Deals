@@ -17,3 +17,11 @@
 //= require js/functions.js
 //= require jquery.raty
 //= require ratyrate
+//= require js/tabs
+//= require_self
+
+new CBPFWTabs( document.getElementById( 'tabs' ) );
+$('.wishlist_close_admin').on('click', function(c){
+    $(this).parent().parent().parent().fadeOut('slow', function(c){
+    });
+});

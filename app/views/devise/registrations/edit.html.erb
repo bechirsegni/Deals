@@ -1,43 +1,262 @@
-<br><br><br><br><br><br><br><br><br><br>
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, 'Restaurants, Bars, coffee') %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
-  <%= devise_error_messages! %>
-    <div class="field">
-    <%= f.file_field :avatar %>
+<section class="parallax-window" data-parallax="scroll" data-image-src="img/admin_top.jpg" data-natural-width="1400" data-natural-height="470">
+  <div class="parallax-content-1">
+    <div class="animated fadeInDown">
+      <h1>Hello <%=current_user.first_name %></h1>
+      <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
     </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
   </div>
+</section><!-- End section -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<%=render 'common/position'%>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<div class="margin_60 container">
+  <div id="tabs" class="tabs">
+    <nav>
+      <ul>
+        <li><a href="#coupons" class="icon-booking"><span>Coupons</span></a></li>
+        <li><a href="#deals" class="icon-wishlist"><span>Your Deals</span></a></li>
+        <li><a href="#settings" class="icon-settings"><span>Settings</span></a></li>
+        <li><a href="#profile" class="icon-profile"><span>Profile</span></a></li>
+      </ul>
+    </nav>
+    <div class="content">
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+      <section id="coupons">
+        <div id="tools">
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+              <div class="styled-select-filters">
+                <select name="sort_type" id="sort_type">
+                  <option value="" selected>Sort by type</option>
+                  <option value="tours">Tours</option>
+                  <option value="hotels">Hotels</option>
+                  <option value="transfers">Transfers</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+              <div class="styled-select-filters">
+                <select name="sort_date" id="sort_date">
+                  <option value="" selected>Sort by date</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="recent">Recent</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div><!--/tools -->
+        <%if current_user.deals.empty?%>
+            <div class="empty_deal" style="border-style: dashed;border-color: #E6E6E6;">
+              <h1 class="empty_deal" ><i class=" icon_set_1_icon-11"></i>You Don't Have any Coupons</h1>
+              <p class="empty_deal" style="text-align: center; margin-top: -146px;">Discover Many Offres and get your free Coupons</p>
+            </div>
+        <%else%>
+        <%current_user.coupons.includes(:deal).each do |c|%>
+        <div class="strip_booking">
+          <div class="row">
+            <div class="col-md-2 col-sm-2">
+              <div class="date">
+                <span class="month">Price</span>
+                <span class="day"><strong><%=c.deal.prix_after%></strong><%=c.deal.percentage%>% OFF</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-5">
+              <h3 class="hotel_booking"><%=c.deal.title%><span>Expire: <%=c.deal.deadline%></span></h3>
+            </div>
+            <div class="col-md-2 col-sm-3">
+              <ul class="info_booking">
+                <li><strong>Coupon id</strong> <%=c.number%></li>
+                <li><strong>Created At</strong> <%=c.created_at.strftime("%d %b. %Y")%></li>
+              </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+              <div class="booking_buttons">
+                <a href="#0" class="btn_2">Print</a>
+                <a href="#0" class="btn_3">Delete</a>
+              </div>
+            </div>
+          </div><!-- End row -->
+        </div><!-- End strip booking -->
+        <%end%>
+         <%end%>
+      </section><!-- End section 1 -->
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+      <section id="deals">
+        <%if current_user.deals.empty?%>
+        <div class="empty_deal" style="border-style: dashed;border-color: #E6E6E6;">
+          <h1 class="empty_deal" ><i class=" icon_set_1_icon-11"></i>You Don't Have any Deals</h1>
+          <p class="empty_deal" style="text-align: center; margin-top: -146px;">You Can Create Deals and reach many customers</p>
+         </div>
+            <%else%>
+        <div class="row">
+          <%current_user.deals.includes(:category, :price_average).each do |d|%>
+              <div class="col-md-4 col-sm-4">
+                <div class="tour_container">
+                  <%= link_to d do %>
+                      <div class="img_container">
+                        <%=image_tag d.cover_photo.url(:medium), style:'width:406px; height:270px', class:'img-responsive'%>
+                        <div class="badge_save">Save<strong><%=d.percentage%>%</strong></div>
+                        <div class="short_info">
+                          <i class="<%=d.category.icon%>"></i> <%=d.category.name%><span class="price"><sup>DT</sup><%=d.prix_after%></span>
+                        </div>
+                  <%end%>
+                  </div>
+                  <div class="tour_title">
+                    <h3><strong><%=truncate(d.title, length:24)%></strong></h3>
+                    <div class="rating">
+                      <%= rating_for d, "price", readonly: true %>
+                    </div><!-- end rating -->
+                    <div class="wishlist">
+                      <%= link_to vote_deal_path(d), method: :put, class: "tooltip_flip tooltip-effect-1", style:'font-size: 14px;' do %>
+                          <%= d.get_upvotes.size %><span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span>
+                      <%end%>
+                    </div><!-- End wish list-->
+                  </div>
+                </div><!-- End box tour -->
+              </div>
+           <%end%>
+        </div><!-- End row -->
+            <%end%>
+      </section><!-- End section 2 -->
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+      <section id="settings">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 add_bottom_30">
+            <h4>Change your password</h4>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+                <%= devise_error_messages! %>
+            <div class="form-group">
+              <label>leave blank if you don't want to change it or you signup with Facebook/Google</label>
+              <%= f.password_field :current_password, autocomplete: "off" ,class:'form-control', placeholder:'Current Password'%>
+            </div>
+            <div class="form-group">
+              <label>New password</label>
+              <%= f.password_field :password, autocomplete: "off" ,class:'form-control'%>
+            </div>
+            <div class="form-group">
+              <label>Confirm new password</label>
+              <%= f.password_field :password_confirmation, autocomplete: "off" ,class:'form-control'%>
+            </div>
+                <%=f.submit 'Update Your Settings' , class:'btn_1 green'%>
+          </div>
+          <div class="col-md-6 col-sm-6 add_bottom_30">
+            <h4>Change your email</h4>
+            <div class="form-group">
+              <label>Email</label>
+              <%= f.email_field :email, autofocus: true , class:'form-control'%>
+            </div>
+            <%end%>
+          </div>
+        </div><!-- End row -->
+      </section><!-- End section 3 -->
 
-<h3>Cancel my account</h3>
+      <section id="profile">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <h4>Your profile</h4>
+            <ul id="profile_summary">
+              <li>Username <span><%=current_user.username%></span></li>
+              <li>First name <span><%=current_user.first_name%></span></li>
+              <li>Last name <span><%=current_user.last_name%></span></li>
+              <li>Phone number <span><%=current_user.phone%></span></li>
+              <li>Street address <span><%=current_user.address%></span></li>
+              <li>Town/City <span><%=current_user.city%></span></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%=image_tag current_user.avatar.url(:medium), class:'img-responsive styled profile_pic'%>
+          </div>
+        </div><!-- End row -->
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <div class="divider"></div>
 
-<%= link_to "Back", :back %>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Edit profile</h4>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+                <%= devise_error_messages! %>
+            <div class="form-group">
+              <label>First name</label>
+              <%=f.text_field :first_name, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Last name</label>
+              <%=f.text_field :last_name, class:'form-control'%>
+            </div>
+          </div>
+        </div>
+                <!-- End row -->
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Username</label>
+              <%=f.text_field :username, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label>Phone number</label>
+                <%=f.text_field :phone, class:'form-control'%>
+              </div>
+          </div>
+        </div><!-- End row -->
+
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Edit address</h4>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Address</label>
+              <%=f.text_field :address, class:'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>City/Town</label>
+              <select  class="form-control" name="user[city]" id="user_city">
+                <%city.each do |c|%>
+                <option> <%=c%></option>
+              <%end%>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <select name="user[gender]" class="form-control" id="user_gender">
+                <option>Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+        </div><!-- End row -->
+
+        <hr>
+        <h4>Upload profile photo</h4>
+        <div class="form-inline upload_1">
+          <div class="form-group">
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+
+        <!-- Hidden on mobiles -->
+        <div class="hidden-xs">
+          <!-- Drop Zone -->
+          <hr>
+          <button type="submit" class="btn_1 green">Update Profile</button>
+          </div>
+            <%end%>
+      </section><!-- End section 4 -->
+
+    </div><!-- End content -->
+  </div><!-- End tabs -->
+</div>
+

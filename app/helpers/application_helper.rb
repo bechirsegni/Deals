@@ -9,4 +9,8 @@ module ApplicationHelper
     end
   end
 
+  def city
+    ["kairouan", "tunis", "sousse"]
+  end
+
 end

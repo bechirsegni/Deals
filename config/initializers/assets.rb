@@ -20,4 +20,5 @@ Rails.application.config.assets.precompile += %w( css/ion.rangeSlider.skinFlat.c
 Rails.application.config.assets.precompile += %w( js/infobox.js )
 Rails.application.config.assets.precompile += %w( css/jquery.switch.css )
 
-
+Rails.application.config.assets.precompile += %w( css/admin.css )
+Rails.application.config.assets.precompile += %w( js/tabs.js )

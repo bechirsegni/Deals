@@ -10,7 +10,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require css/base
+ *= require css/bootstrap.css
+ *= require css/style.css
+ *= require css/menu.css
+ *= require css/responsive.css
+ *= require css/fontello/css/icon_set_1.css
+ *= require css/fontello/css/icon_set_2.css
+ *= require css/fontello/css/fontello.css
+ *= require css/icon_restaurant/css/icon_restaurants.css
+ *= require css/magnific-popup.css
+ *= require css/pop_up.css
+ *= require css/admin
+ *= require css/jquery.switch.css
  *= require_self
  */
 
