@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get  'about',        to: 'static_pages#about'
   get  'restaurants',  to: 'static_pages#restaurants'
   get  'wishlist',     to: 'static_pages#wishlist'
-
-  resources 'contacts', only: [:new, :create]
+  get  'coupon', to:'static_pages#coupon'
+  resources 'contacts', only: [:new, :create, :show]
   resources :articles
   resources :categories
   resources :deals do

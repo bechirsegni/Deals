@@ -2,6 +2,7 @@ class CouponsController < ApplicationController
   before_action :authenticate_user!, only:[:create]
   before_action :correct_user, only: [:destroy]
 
+
   def create
     @deal = Deal.find(params[:deal_id])
     @coupon = @deal.coupons.build(review_params)
