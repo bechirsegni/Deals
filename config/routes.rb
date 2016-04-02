@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
-    scope module: :v1 do
-      # We are going to list our resources here
-    end
+    resources :api/users
+    resources :api/sessions
   end
 
 
