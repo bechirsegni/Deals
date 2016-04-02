@@ -6,8 +6,8 @@ class DealsController < ApplicationController
 
   def index
     @categories = Category.where(parent_id: nil)
-    query = params[:q].presence || "*"
-    @deals = Deal.search(query).records
+    search = Deal.search((params[:query].present? ? params[:query] : '*'))
+    @deals = search.results
   end
 
   def show

@@ -2,7 +2,7 @@
   <div class="tour_container">
     <div class="img_container">
       <%= link_to deal do %>
-          <%=image_tag deal.cover_photo.url(:medium), style:'width:406px; height:270px', class:'img-responsive'%>
+          <%=image_tag deal.image, style:'width:406px; height:270px', class:'img-responsive', load: true%>
           <div class="badge_save">Save<strong><%=deal.percentage%>%</strong></div>
           <div class="short_info">
             <i class="icon_set_3_restaurant-2"></i> Fast food<span class="price"><sup>DT</sup><%=deal.prix_after%></span>
