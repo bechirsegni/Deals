@@ -1,6 +1,6 @@
 @import url("bootstrap.css"); 						        								/* Main Bootstrap */
 @import url("animate.min.css");															/* Animate On Page Scroll */
-@import url("style.css");																		/* Main theme styles */
+@import url("style.css.erb");																		/* Main theme styles */
 @import url("menu.css");																		/* Menu styles */
 @import url("responsive.css");																/* Responsive */
 @import url("fontello/css/icon_set_1.css.erb");										/* Icon pack */

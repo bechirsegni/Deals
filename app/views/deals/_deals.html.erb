@@ -1,0 +1,12 @@
+<div class="row">
+  <%@deals.each do |deal|%>
+      <%= render 'deal', deal: deal %>
+      <%end%><!-- End col-md-6 -->
+</div><!-- End row -->
+<hr>
+
+<div class="text-center">
+  <ul class="pagination">
+    <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
+  </ul>
+</div><!-- end pagination-->

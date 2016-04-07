@@ -6,8 +6,8 @@
       <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
     </div>
   </div>
+  <%=render 'common/search'%>
 </section><!-- End section -->
-
 <%=render 'common/position'%>
 <div class="container margin_60">
   <div class="row">
@@ -18,20 +18,13 @@
         <div class="row">
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="styled-select-filters">
-              <select name="sort_price" id="sort_price">
-                <option value="" selected>Sort by price</option>
-                <option value="lower">Lowest price</option>
-                <option value="higher">Highest price</option>
-              </select>
+              <%= link_to "Sort by Price", :sort => 'prix_after'%>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="styled-select-filters">
-              <select name="sort_rating" id="sort_rating">
-                <option value="" selected>Sort by ranking</option>
-                <option value="lower">Lowest ranking</option>
-                <option value="higher">Highest ranking</option>
-              </select>
+              <%= link_to "Sort by Reviews"%>
+
             </div>
           </div>
           <div class="col-md-6 col-sm-6 hidden-xs text-right">
@@ -40,18 +33,9 @@
         </div>
       </div><!--End tools -->
 
-      <div class="row">
-        <%@deals.each do |deal|%>
-            <%= render 'deal', deal: deal %>
-         <%end%><!-- End col-md-6 -->
-      </div><!-- End row -->
-      <hr>
-
-      <div class="text-center">
-        <ul class="pagination">
-          <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
-        </ul>
-      </div><!-- end pagination-->
+      <div id="deals">
+        <%= render 'deals/deals'%>
+      </div>
 
     </div><!-- End col lg 9 -->
   </div><!-- End row -->

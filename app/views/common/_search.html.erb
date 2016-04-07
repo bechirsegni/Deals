@@ -1,0 +1,14 @@
+<div id="search_bar_container" style="height: 104px; padding-top: 29px">
+  <div class="container">
+    <%= form_tag deals_path, role: 'search', method: :get do %>
+        <div class="search_bar">
+                            <span class="nav-facade-active" id="nav-search-in" style="background: #e04f67">
+                            <span id="nav-search-in-content" >All Deals</span>
+                            </span>
+          <div class="nav-searchfield-outer">
+            <%= text_field_tag :q, params[:query],id:'twotabsearchtextbox' %>
+          </div>
+        </div>
+        <%end%><!-- End search bar-->
+  </div>
+</div>

@@ -13,6 +13,7 @@ class Deal < ApplicationRecord
   validates_with AttachmentPresenceValidator, attributes: :cover_photo
   validates_with AttachmentSizeValidator, attributes: :cover_photo, less_than: 2.megabytes
 
+  scope :rating, ->{order("cached_votes_up desc")}
 
 
   belongs_to :user

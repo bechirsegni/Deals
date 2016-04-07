@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get  'coupon', to:'static_pages#coupon'
   resources 'contacts', only: [:new, :create, :show]
   resources :articles
+  resources :newsletters , only:[:new,:create]
   resources :categories
   resources :deals do
     resources :reviews

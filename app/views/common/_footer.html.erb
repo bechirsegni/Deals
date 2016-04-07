@@ -26,12 +26,12 @@
         <h3>Newsletter</h3>
         <p>Join our newsletter to keep be informed about offers and news.</p>
         <div id="message-newsletter_2"></div>
-        <form method="post" action="http://ansonika.com/citytours/assets/newsletter.php" name="newsletter_2" id="newsletter_2">
+        <%= form_for Newsletter.new  do |f|%>
           <div class="form-group">
-            <input name="email_newsletter_2" id="email_newsletter_2"  type="email" value=""  placeholder="Your mail" class="form-control">
+            <%=f.email_field :email, class:'form-control' ,value:"#{user_signed_in? ?  current_user.email : '' }", placeholder:'Your Email'%>
           </div>
-          <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-        </form>
+          <%= f.submit 'Submit' ,class:'btn_1'%>
+        <%end%>
       </div>
       <div class="col-md-2 col-sm-3">
         <h3>Mobile Apps</h3>

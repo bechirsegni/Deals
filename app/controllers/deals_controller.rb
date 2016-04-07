@@ -7,7 +7,7 @@ class DealsController < ApplicationController
   def index
     @categories = Category.where(parent_id: nil)
     query = params[:query].presence || "*"
-    @deals = Deal.search(query).records.order(id: :desc).paginate(:page => params[:page], :per_page => 4)
+    @deals = Deal.search(query).records.order(params[:sort], id: :desc).paginate(:page => params[:page], :per_page => 4)
   end
 
   def autocomplete
@@ -63,6 +63,7 @@ class DealsController < ApplicationController
 
   private
 
+
   def set_deal
     @deal = Deal.friendly.find(params[:id])
   end
@@ -79,7 +80,6 @@ class DealsController < ApplicationController
   def correct_user
     unless @deal.user_id == current_user.id
       redirect_to deals_path, notice: "Not authorized to edit this Deal"
-      #you must return false to halt
       false
     end
   end
