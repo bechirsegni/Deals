@@ -1,9 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  def edit
-    @user = current_user
-  end
-
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
     if account_update_params[:password].blank?

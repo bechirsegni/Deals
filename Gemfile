@@ -25,11 +25,12 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'ratyrate', :github => 'wazery/ratyrate'
 gem 'paperclip', '~> 5.0.0.beta1'
 gem 'will_paginate-bootstrap'
+gem 'friendly_id', '~> 5.1'
+
 
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'searchkick'
-
 group :development do
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'

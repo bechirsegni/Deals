@@ -11,18 +11,10 @@
       <%= form_tag deals_path, role: 'search', method: :get do %>
       <div class="search_bar">
                             <span class="nav-facade-active" id="nav-search-in" style="background: #e04f67">
-                            <span id="nav-search-in-content" >All tours</span>
-                            <span class="nav-down-arrow nav-sprite"></span>
-                            <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
-                              <option value="All Tours"  title="All Tours">All Tours</option>
-                              <option value="Museums" title="Museums">Museums</option>
-                              <option value="Tickets" title="Tickets">Tickets</option>
-                              <option value="Hotels" title="Hotels">Hotels</option>
-                              <option value="Restaurants" title="Restaurants">Restaurants</option>
-                            </select>
+                            <span id="nav-search-in-content" >All Deals</span>
                             </span>
         <div class="nav-searchfield-outer">
-          <%= text_field_tag :query, params[:query],id:'twotabsearchtextbox' %>
+          <%= text_field_tag :q, params[:query],id:'twotabsearchtextbox' %>
         </div>
       </div>
        <%end%><!-- End search bar-->

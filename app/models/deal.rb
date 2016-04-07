@@ -1,4 +1,8 @@
 class Deal < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
@@ -18,7 +22,7 @@ class Deal < ApplicationRecord
 
   ratyrate_rateable "price"
   acts_as_votable
-  searchkick autocomplete: ['title']
+  searchkick autocomplete: ['title','about']
 
   def percentage
     (prix_after.to_f  / prix_before.to_f * 100).round

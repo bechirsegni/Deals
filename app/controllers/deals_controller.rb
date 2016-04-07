@@ -7,7 +7,11 @@ class DealsController < ApplicationController
   def index
     @categories = Category.where(parent_id: nil)
     query = params[:query].presence || "*"
-    @deals = Deal.search(query).records
+    @deals = Deal.search(query).records.order(id: :desc).paginate(:page => params[:page], :per_page => 4)
+  end
+
+  def autocomplete
+    render json: Deal.search(params[:query], autocomplete: true, limit: 10).map {|deal| {title: deal.title, value: deal.id}}
   end
 
   def show
@@ -60,7 +64,7 @@ class DealsController < ApplicationController
   private
 
   def set_deal
-    @deal = Deal.find(params[:id])
+    @deal = Deal.friendly.find(params[:id])
   end
 
   def deal_params
@@ -68,12 +72,16 @@ class DealsController < ApplicationController
                                  :address,:timing,:email,:deadline,:menu,:conditions,
                                  :reservation,:city,:business,:cover_photo,
                                  :website,:phone,:facebook,:instagram,:user_id,
-                                 :wifi, :parking,:music,:smoking)
+                                 :wifi, :parking,:music,:smoking,:slug)
   end
 
+
   def correct_user
-    @deal = current_user.deals.find_by_id(params[:id])
-    redirect_to deals_path, notice: "Not authorized to edit this Deal" if @deal.nil?
+    unless @deal.user_id == current_user.id
+      redirect_to deals_path, notice: "Not authorized to edit this Deal"
+      #you must return false to halt
+      false
+    end
   end
 
   def beautify_search_url

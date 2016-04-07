@@ -4,14 +4,14 @@
     <a href="#" class="btn_1 add_bottom_30" data-toggle="modal" data-target="#myReview">Leave a review</a>
   </div>
   <div class="col-md-9">
-    <div id="general_rating"><%= @deal.reviews.size%> Reviews
+    <div id="general_rating"><%= @deal.reviews.size%> Review
       <div class="rating">
-        Speed : <%= rating_for @deal, "price" , path: 'star_icons'%>
+        <%= rating_for @deal, "price" , path: 'star_icons'%>
       </div>
     </div><!-- End general_rating -->
     <hr>
-    <% @deal.reviews.each do |review| %>
-        <div class="review_strip_single">
+    <% @deal.reviews.limit(4).each do |review| %>
+        <div class="review_strip_single" id="review">
           <%=image_tag review.user.avatar.url(:thumb), class:'img-circle'%>
           <small> - <%="#{time_ago_in_words(review.created_at)} ago"%> -</small>
           <h4><%=review.user.full_name%></h4>

@@ -9,7 +9,7 @@
       <div class="modal-body">
         <div id="message-review">
         </div>
-        <%= form_for([@deal, @deal.reviews.build]) do |f| %>
+        <%= form_for([@deal, @deal.reviews.build] ) do |f| %>
           <!-- End row -->
           <div class="form-group">
             <%= f.text_area :body , class:'form-control', style:'height:100px', placeholder:'Write Your Review'%>

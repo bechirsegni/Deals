@@ -7,14 +7,26 @@ class ReviewsController < ApplicationController
     @review = @deal.reviews.build(review_params)
     @review.user = current_user
     if @review.save!
-    redirect_to deal_path(@deal)
+      respond_to do |format|
+        format.html do
+          flash[:success] = 'Comment posted.'
+          redirect_to @deal
+        end
+        format.js
+      end
     end
   end
 
   def destroy
     @deal = Deal.find(params[:deal_id])
     @review.destroy
-    redirect_to @deal
+    respond_to do |format|
+      format.html do
+        flash[:success] = 'Comment Delete.'
+        redirect_to @deal
+      end
+      format.js
+    end
   end
 
   private

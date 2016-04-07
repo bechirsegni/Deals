@@ -18,7 +18,6 @@
 //= require jquery.raty
 //= require ratyrate
 //= require js/tabs
-//= require typeahead.bundle.min
 //= require_self
 
 new CBPFWTabs( document.getElementById( 'tabs' ) );
