@@ -30,6 +30,7 @@ class User < ApplicationRecord
       user.avatar = auth.info.image
       user.password = Devise.friendly_token[0,20]
       user.username = user.email.split("@").first
+      user.gender = user.gender
     end
   end
 
