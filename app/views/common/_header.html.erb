@@ -16,11 +16,14 @@
         <div class="col-md-6 col-sm-6 col-xs-6">
           <ul id="top_links">
             <%if user_signed_in?%>
+                <div class="dropdown dropdown-cart" style="float: left;" >
+                <li ><%=link_to account_path do %><i class="icon-booking"></i>Coupons<%end%></li>
+                  </div>
                 <li>
                   <div class="dropdown dropdown-cart" style="margin-top:-4px;" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <%=current_user.first_name =  '' ? current_user.full_name : current_user.user_name  %>
-                      <%= image_tag current_user.avatar.url(:thumb), class:'img-circle', style:'width:35px; height:26px;'%></a>
+                      <%=current_user.first_name = ''  ? current_user.first_name : current_user.user_name  %>
+                      <%= image_tag current_user.avatar.url(:thumb), class:'img-circle', style:'width:30px; height:28px;'%></a>
                     <ul class="dropdown-menu" id="cart_items">
                       <li><%=link_to 'Account', account_path, style:"#{style_menu}" %></li>
                       <li><%=link_to 'Your Coupons' ,account_path, style:"#{style_menu}"%></li>
@@ -66,13 +69,13 @@
               <%= link_to 'Food & Drinks', restaurants_path , class:'show-submenu'%>
             </li>
             <li class="submenu">
-              <%= link_to 'Discover', restaurants_path , class:'show-submenu'%>
+              <%= link_to 'Discover', discover_path , class:'show-submenu'%>
             </li>
             <li class="submenu">
-              <%= link_to 'Beauty & Spas', restaurants_path , class:'show-submenu'%>
+              <%= link_to 'Beauty & Spas', beauty_spas_path , class:'show-submenu'%>
             </li>
             <li class="submenu">
-              <%= link_to 'Gadgets', restaurants_path , class:'show-submenu'%>
+              <%= link_to 'Gadgets', gadgets_path , class:'show-submenu'%>
             </li>
           </ul>
         </div><!-- End main-menu -->

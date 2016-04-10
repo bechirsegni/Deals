@@ -2,7 +2,6 @@
 
 <%= content_for :css do%>
     <%= stylesheet_link_tag 'css/skins/square/grey.css'%>
-    <%= stylesheet_link_tag 'css/date_time_picker.css'%>
 <%end%>
 
 <%= form_for @deal, :multipart => true do |f|%>
@@ -19,22 +18,22 @@
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
-              <label>Business Name</label>
-              <%= f.text_field :business, class:'form-control'%>
+              <label>Business Name*</label>
+              <%= f.text_field :business, class:'form-control', :required => true%>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
-              <label>Phone</label>
-              <%= f.text_field :phone, class:'form-control'%>
+              <label>Phone*</label>
+              <%= f.text_field :phone, class:'form-control', :required => true%>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
-              <label>Email</label>
-              <%= f.email_field :email, class:'form-control'%>
+              <label>Email*</label>
+              <%= f.email_field :email, class:'form-control', :required => true%>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
@@ -47,8 +46,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="form-group">
-              <label>Working Hours</label>
-              <%= f.text_field :timing, class:'form-control', placeholder:'Monday to Friday 9.00am - 7.30pm'%>
+              <label>Working Hours*</label>
+              <%= f.text_field :timing, class:'form-control', placeholder:'Monday to Friday 9.00am - 7.30pm', :required => true%>
             </div>
           </div>
         </div>
@@ -68,7 +67,7 @@
         </div>
       </div><!--End step -->
 
-      <%= f.file_field :cover_photo %>
+      <%= f.file_field :cover_photo , :required => true%>
 
       <div class="form_title">
         <h3><strong>2</strong>Business Location</h3>
@@ -80,17 +79,16 @@
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
-              <label>City</label>
+              <label>City*</label>
               <select id="city" class="form-control" name="deal[city]">
-                <option>Select...</option>
                 <option value="Kairouan">Kairouan</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
-              <label>Address</label>
-              <%= f.text_field :address, class:'form-control'%>
+              <label>Address*</label>
+              <%= f.text_field :address, class:'form-control', :required => true%>
             </div>
           </div>
         </div>
@@ -106,42 +104,43 @@
         <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="form-group">
-            <label>City</label>
+            <label>Category*</label>
             <%= f.collection_select(:category_id, Category.where(parent_id: nil),
                                     :id, :name, {:prompt => 'Choose a category'},
-                                     {class: "form-control"})%>
+                                     {class: "form-control", :required => true})%>
           </div>
         </div>
           </div>
         <div class="form-group">
-          <label>Title</label>
-          <%= f.text_field :title, class:'form-control'%>
+          <label>Title*</label>
+          <%= f.text_field :title, class:'form-control', :required => true%>
         </div>
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="form-group">
-              <label>About The Deal</label>
-              <%= f.text_area :about, class:'form-control', style:'max-width: 699px;'%>
+              <label>About The Deal*</label>
+              <%= f.text_area :about, class:'form-control', style:'max-width: 699px;', :required => true%>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-4">
             <div class="form-group">
-              <label>Original Price</label>
-              <%= f.text_field :prix_before, class:'form-control'%>
+              <label>Original Price*</label>
+              <%= f.text_field :prix_before, class:'form-control', :required => true%>
             </div>
           </div>
           <div class="col-md-4 col-sm-4">
             <div class="form-group">
-              <label>Deal Price</label>
-              <%= f.text_field :prix_after, class:'form-control'%>
+              <label>Deal Price*</label>
+              <%= f.text_field :prix_after, class:'form-control', :required => true%>
             </div>
           </div>
           <div class="col-md-4 col-sm-4">
             <div class="form-group">
-              <label>End of the deal</label>
-              <%= f.text_field :deadline, class:'date-picker form-control', :value=>Date.today.strftime('%m-%d-%Y'), :id =>"dp5" %>
+              <label>End of the deal*</label>
+              <%= f.text_field :deadline, class:'date-picker form-control',
+                               :value=>Date.today.strftime('%m-%d-%Y'), :id =>"dp5", :required => true %>
             </div>
           </div>
           </div>
@@ -167,10 +166,6 @@
       </div><!--End step -->
 
       <div id="policy">
-        <h4>Cancellation policy</h4>
-        <div class="form-group">
-          <label><input type="checkbox" name="policy_terms" id="policy_terms">I accept terms and conditions and general policy.</label>
-        </div>
         <%=f.submit 'Submit Your Deal', class:'btn_1 green medium'%>
       </div>
     </div>
@@ -265,16 +260,3 @@
 </div><!--End container -->
 
 <%end%>
-
-<%= content_for :js do%>
-    <%= javascript_include_tag 'js/bootstrap-datepicker.js'%>
-    <%= javascript_include_tag 'js/datepicker_advanced.js'%>
-<%end%>
-<script>
-  $("#dt5").datepicker({
-        format: 'mm-dd-yyyy'
-      })
-      .on('changeDate', function(ev){
-        $('#dt5').datepicker('hide');
-      });
-</script>

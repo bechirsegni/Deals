@@ -31,6 +31,7 @@ gem 'friendly_id', '~> 5.1'
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'searchkick'
+
 group :development do
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
@@ -41,3 +42,4 @@ group :development do
   gem 'bullet', '~> 5.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'mina'

@@ -1,0 +1,76 @@
+<% provide(:title, 'Gadgets') %>
+
+
+<%= content_for :css do%>
+    <%= stylesheet_link_tag 'css/skins/square/grey.css'%>
+    <%= stylesheet_link_tag 'css/ion.rangeSlider.css'%>
+    <%= stylesheet_link_tag 'css/ion.rangeSlider.skinFlat.css'%>
+<%end%>
+
+<section class="parallax-window" data-parallax="scroll" data-image-src="<%=image_url 'gadgets.jpg'%>" data-natural-width="1400" data-natural-height="470">
+  <div class="parallax-content-1">
+    <div class="animated fadeInDown">
+      <h1>Gadgets Deals</h1>
+      <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+    </div>
+  </div>
+</section><!-- End section -->
+
+<%=render 'common/position'%>
+
+<div class="container margin_60">
+  <div class="row">
+    <aside class="col-lg-3 col-md-3">
+      <%= render 'static_pages/partials/restaurants_categories'%>
+    </aside><!--End aside -->
+    <div class="col-lg-9 col-md-8">
+      <div id="tools">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div class="styled-select-filters">
+              <select name="sort_price" id="sort_price">
+                <option value="" selected>Sort by price</option>
+                <option value="lower">Lowest price</option>
+                <option value="higher">Highest price</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div class="styled-select-filters">
+              <select name="sort_rating" id="sort_rating">
+                <option value="" selected>Sort by ranking</option>
+                <option value="lower">Lowest ranking</option>
+                <option value="higher">Highest ranking</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 hidden-xs text-right">
+            <a href="#" class="bt_filters"><i class="icon-th"></i></a> <a href="all_tours_list.html" class="bt_filters"><i class=" icon-list"></i></a>
+          </div>
+        </div>
+      </div><!--End tools -->
+      <div class="row">
+        <%= render 'static_pages/partials/deals'%>
+      </div><!-- End row -->
+      <hr>
+      <div class="text-center">
+        <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
+      </div><!-- end pagination-->
+    </div><!-- End col lg 9 -->
+  </div><!-- End row -->
+</div><!-- End container -->
+
+
+
+<%= content_for :js do%>
+    <%= javascript_include_tag 'js/cat_nav_mobile.js'%>
+<%end%>
+<script>$('#cat_nav').mobileMenu();</script>
+<!-- Check and radio inputs -->
+<script>
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-grey',
+    radioClass: 'iradio_square-grey'
+  });
+</script>
+<!-- Map -->

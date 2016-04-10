@@ -26,7 +26,7 @@
           <%= f.text_field :number  ,value:"Deals#{rand(max=60000)}", class:'form-control', type: 'hidden' %>
         <%= f.submit 'Get It', class:'btn_full' %>
      <%end%>
-        <%= link_to vote_deal_path(@deal), method: :put, class: "btn_full_outline" do %>
+        <%= link_to account_path, class: "btn_full_outline" do %>
             <i class=" icon-heart"></i> Your Coupons List
         <%end%>
     <%end%>

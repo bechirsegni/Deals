@@ -4,7 +4,7 @@ class CouponsController < ApplicationController
 
 
   def create
-    @deal = Deal.find(params[:deal_id])
+    @deal = Deal.friendly.find(params[:deal_id])
     @coupon = @deal.coupons.build(review_params)
     @coupon.user = current_user
     if @coupon.save!
@@ -13,7 +13,7 @@ class CouponsController < ApplicationController
   end
 
   def destroy
-    @deal = Deal.find(params[:deal_id])
+    @deal = Deal.friendly.find(params[:deal_id])
     @coupon.destroy
     redirect_to :back
   end

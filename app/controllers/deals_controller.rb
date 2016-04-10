@@ -61,6 +61,7 @@ class DealsController < ApplicationController
      redirect_to :back
   end
 
+
   private
 
 

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   acts_as_voter
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "70x70>" }, :unless => "avatar.blank?",
-                    default_url: "/images/:style/missing.png"
+                    default_url: "missing.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   # Include default devise modules. Others available are:

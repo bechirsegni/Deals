@@ -21,4 +21,22 @@ class StaticPagesController < ApplicationController
     @deals = Deal.where(category_id: '1').paginate(:page => params[:page], :per_page => 8)
   end
 
+  def discover
+    @categories = Category.where(name: 'Discover')
+    @subscategories = Category.where(:parent_id => @categories)
+    @deals = Deal.where(category_id: '7').paginate(:page => params[:page], :per_page => 8)
+  end
+
+  def beauty_spas
+    @categories = Category.where(name: 'Beauty & Spas')
+    @subscategories = Category.where(:parent_id => @categories)
+    @deals = Deal.where(category_id: '5').paginate(:page => params[:page], :per_page => 8)
+  end
+
+  def gadgets
+    @categories = Category.where(name: 'Gadgets')
+    @subscategories = Category.where(:parent_id => @categories)
+    @deals = Deal.where(category_id: '6').paginate(:page => params[:page], :per_page => 8)
+  end
+
 end

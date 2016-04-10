@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get  '/contact',     to: 'contacts#new'
   get  'about',        to: 'static_pages#about'
   get  'restaurants',  to: 'static_pages#restaurants'
+  get  'beauty_spas',  to: 'static_pages#beauty_spas'
+  get  'discover',     to: 'static_pages#discover'
+  get  'gadgets',      to: 'static_pages#gadgets'
   get  'wishlist',     to: 'static_pages#wishlist'
-  get  'coupon', to:'static_pages#coupon'
+  get  'coupon',       to:'static_pages#coupon'
   resources 'contacts', only: [:new, :create, :show]
   resources :articles
   resources :newsletters , only:[:new,:create]
